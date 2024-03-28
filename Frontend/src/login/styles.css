@@ -1,0 +1,13 @@
+.title_image{
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .image{
+        display: none;
+    }
+    .title_image{
+        display: block;
+        min-width: 300px;
+    }
+}
