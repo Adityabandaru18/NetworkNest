@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./login/Login.jsx";
+import Login from "./login/Login.tsx";
 import App from "./App.tsx";
 const Redirect: React.FC = () => {
   return (

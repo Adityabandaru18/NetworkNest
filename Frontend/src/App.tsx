@@ -1,6 +1,6 @@
 import Home from "./Home/Home"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./login/Login";
+import Login from "./login/Login.tsx";
 import Profile from "./userprofile/Profile";
 import { ChakraProvider } from '@chakra-ui/react'
 
