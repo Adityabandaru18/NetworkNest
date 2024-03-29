@@ -32,6 +32,8 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [admin, setadmin] = useState("");
 
+  let Fb_token: string | null;
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,8 +43,13 @@ const Login = () => {
 
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => {
+      .then((userC) => {
         dispatch(ChangeLogin("Log out"));
+        userC.user.getIdToken()
+        .then((token)=>{
+          Fb_token=token;
+          console.log(Fb_token);
+        })
         setShow(true);
       })
       .catch((error) => {
@@ -53,20 +60,30 @@ const Login = () => {
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, emailL, passL)
-      .then(() => {
+      .then((userC) => {
         dispatch(ChangeLogin("Log out"));
+        userC.user.getIdToken()
+        .then((token)=>{
+          Fb_token=token;
+        })
+      
         setShow(true);
       })
       .catch((e) => {
-        console.log(e);
+ 
         setShowError(e.message);
       });
   };
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider1)
-      .then(() => {
+      .then((userC) => {
         dispatch(ChangeLogin("Log out"));
+        userC.user.getIdToken()
+        .then((token)=>{
+          Fb_token=token;
+          console.log(Fb_token);
+        })
         setShow(true);
 
       })
@@ -77,8 +94,13 @@ const Login = () => {
 
   const handleGithubLogin = () => {
     signInWithPopup(auth, provider2)
-      .then(() => {
+      .then((userC) => {
         dispatch(ChangeLogin("Log out"));
+        userC.user.getIdToken()
+        .then((token)=>{
+          Fb_token=token;
+        })
+        console.log(Fb_token);
         setShow(true);
       })
       .catch((error) => {

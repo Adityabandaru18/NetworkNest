@@ -25,7 +25,7 @@ const DisplayImages: React.FC<Post> = ({ name, image }) => {
    <> 
    {image.name &&  
    
-   <div className="max-w-[600px] mx-auto bg-white  shadow-md overflow-hidden md:max-w-2xl mb-8">
+   <div className="max-w-[700px] mx-auto bg-white  shadow-md overflow-hidden md:max-w-2xl mb-8">
     <div>
       <p className="inline-block ml-4 font-semibold text-base">
         {admin_name.text}

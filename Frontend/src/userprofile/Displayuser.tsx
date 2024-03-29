@@ -18,11 +18,11 @@ const Displayuser: React.FC = () => {
       {postdata.map(
         (post) =>
           post.image.name && (
-            <div key={post.id} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 px-4 mb-4 relative right-5">
+            <div key={post.id} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/3 px-4 mb-4 relative right-1">
               {/* Adjust width for smaller screens (full width), medium screens (2 images in a row), and larger screens (3 images in a row) */}
               <img
                 src={URL.createObjectURL(post.image)}
-                className="w-full h-auto object-cover rounded"
+                className="w-full h-auto object-cover rounded hover:opacity-80"
                 alt="Post"
                 id="userposts"
               />

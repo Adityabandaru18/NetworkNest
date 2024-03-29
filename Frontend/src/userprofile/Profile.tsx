@@ -56,7 +56,7 @@ const Profile: React.FC = () => {
         </div>
         <div className="w-[80%]">
           <div className="w-[90%] m-auto flex flex-col mt-8">
-            <div className="w-[100%] h-[30%] flex flex-row">
+            <div className="w-[100%] h-[30%] flex flex-row justify-center">
               <div className="w-[30%]">
                 <img
                   src={prof.image ? URL.createObjectURL(prof.image) : e1}
@@ -75,7 +75,7 @@ const Profile: React.FC = () => {
               <div className="w-[60%] mr-40 mt-9" id="admin_panel">
                 <div className="block">
                   {admin_name.text ? <p className="inline-block text-2xl">{admin_name.text}</p> : <p className="inline text-2xl">Admin</p>} 
-                  <button className="border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 inline py-1 px-2 ml-6"
+                  <button className="border border-transparent text-sm font-medium rounded-md bg-indigo-600 hover:bg-indigo-700 relative right-3"
                     onClick={handleImageChange}>
                     Update profile pic
                   </button>

@@ -45,7 +45,7 @@ const Posts: React.FC = () => {
 
   return (
     <div>
-      <div className="w-[100%] m-auto h-[150px] mt-3 flex flex-col" id="none_div">
+      <div className="w-[90%] m-auto h-[150px] mt-3 flex flex-col" id="none_div">
         <form onSubmit={handleSubmit}>
           <div className="h-[50%] flex flex-row items-center">
             <img
