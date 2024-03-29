@@ -6,6 +6,7 @@ Welcome to our full stack social media application! This project aims to provide
 
 - **Frontend**: React.js, TypeScript
 - **Backend**: Node.js, Express.js
+- **Styling**: TailwindCSS, Vanilla CSS
 - **Database**: MongoDB
 - **Libraries**: Material UI, ChakraUI, Reduxtoolkit
 - **Authentication**: Firebase
