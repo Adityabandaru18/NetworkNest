@@ -8,13 +8,17 @@ const postSchema = new Schema({
     user_image: String,
     user_text: String,
     images: String,
-    name: String,
-    createdAt: {
-        type: Date,
-        default: Date.now
+    name: {
+        type: String,
+        required: true
     }
+},{
+    timestamps: true
 });
 
 const Post = model("Post", postSchema);
+
+// Create and save a new post
+
 
 export default Post;

@@ -10,3 +10,5 @@ router.delete("/posts",Deleteposts);
 router.post("/admin",Add_adminname);
 router.get("/admin",Show_adminname);
 router.post("/adminprofile",Add_profile);
+
+export default router;
