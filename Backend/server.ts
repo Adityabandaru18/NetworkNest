@@ -5,7 +5,10 @@ import mongoose from "mongoose";
 // import axios from "axios";
 import dotenv from "dotenv";
 // import jwt from "jsonwebtoken";
-// import passport from "passport";
+import multer from 'multer';
+
+
+const upload = multer({ dest: 'uploads/' });
 dotenv.config(); 
 
 const app: Express = express();
@@ -14,7 +17,8 @@ const MongoUrl : string= process.env.MONGODB_URI || "";
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/post",postrouter);
+app.use('/uploads',express.static("uploads"))
+app.use('/backend',postrouter);
 mongoose.connect(MongoUrl)
   .then(() => {
     app.listen(port, () => {

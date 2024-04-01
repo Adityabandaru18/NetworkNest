@@ -4,6 +4,7 @@ import friendreducer from "./slices/friendsslice";
 import profilereducer from './slices/profileslice';
 import Loginreducer from "./slices/Loginslice";
 import adminreducer from "./slices/adminslice";
+import tokenreducer from "./slices/tokenslice";
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     friend : friendreducer,
     profile : profilereducer,
     Login: Loginreducer,
-    Admin : adminreducer
+    Admin : adminreducer,
+    token: tokenreducer
   },
 });
 

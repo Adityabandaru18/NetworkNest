@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { ChangeLogin } from "../redux/slices/Loginslice.ts";
 import { Alert, AlertIcon } from '@chakra-ui/react';
 import { addadmin } from "../redux/slices/adminslice.ts";
+import { AddToken } from "../redux/slices/tokenslice.ts";
 // import UserModal from "./UserModal.tsx";
 
 const Login = () => {
@@ -32,7 +33,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const [admin, setadmin] = useState("");
 
-  let Fb_token: string | null;
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,12 +46,8 @@ const Login = () => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        userC.user.getIdToken()
-        .then((token)=>{
-          Fb_token=token;
-          console.log(Fb_token);
-        })
-        setShow(true);
+        dispatch(AddToken(userC.user.uid));
+    setShow(true);
       })
       .catch((error) => {
         console.log(error);
@@ -62,12 +59,8 @@ const Login = () => {
     signInWithEmailAndPassword(auth, emailL, passL)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        userC.user.getIdToken()
-        .then((token)=>{
-          Fb_token=token;
-        })
-      
-        setShow(true);
+          dispatch(AddToken(userC.user.uid));
+      setShow(true);
       })
       .catch((e) => {
  
@@ -79,12 +72,8 @@ const Login = () => {
     signInWithPopup(auth, provider1)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        userC.user.getIdToken()
-        .then((token)=>{
-          Fb_token=token;
-          console.log(Fb_token);
-        })
-        setShow(true);
+          dispatch(AddToken(userC.user.uid));
+      setShow(true);
 
       })
       .catch((error) => {
@@ -96,12 +85,8 @@ const Login = () => {
     signInWithPopup(auth, provider2)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        userC.user.getIdToken()
-        .then((token)=>{
-          Fb_token=token;
-        })
-        console.log(Fb_token);
-        setShow(true);
+        dispatch(AddToken(userC.user.uid));
+    setShow(true);
       })
       .catch((error) => {
         setShowError(error);
@@ -114,6 +99,7 @@ const Login = () => {
 
   return (
     <>
+    
       <div className="flex flex-row justify-evenly items-center w-[100%] h-[100vh]">
         <div className="image">
           <img src={logo1} />

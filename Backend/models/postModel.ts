@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const postSchema = new Schema({
     token: {
         type: String,
-        required: true
+        required: true,
     },
     user_image: String,
     user_text: String,

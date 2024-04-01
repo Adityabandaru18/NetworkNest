@@ -15,6 +15,7 @@ export const postSlice = createSlice({
         addPost(state, action: PayloadAction<Post>) {
             console.log(action.payload);
             state.push(action.payload);
+            
         },
         removePost(state, action: PayloadAction<number>) {
             const index = action.payload;
