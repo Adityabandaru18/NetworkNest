@@ -48,7 +48,6 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-        // dispatch(token_found(token));
         setShow(true);
       })
       .catch((error) => {
@@ -62,6 +61,8 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
+
+        navigate("/");
       })
       .catch((e) => {
         setShowError(e.message);
@@ -74,9 +75,10 @@ const Login = () => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));    
         setShow(true);
+     
       })
       .catch((error) => {
-        setShowError(error);
+        setShowError(error || "");
       });
   };
 

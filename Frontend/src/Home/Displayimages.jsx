@@ -3,10 +3,9 @@ import { FaHeart, FaComment, FaShare } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import e1 from "../assets/e1.jpg";
 
-const DisplayImages = ({ name, image, user_text }) => {
+const DisplayImages = ({ name, image, user_text, user_image }) => {
   const [liked, setLiked] = useState(false);
-  const profile_pic = useSelector(state => state.admin_profile.data)
-  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || " ";
+  const profi = `http://localhost:4000/uploads/${user_image}` || " ";
   // console.log(profi);
 
   const toggleLike = () => {
@@ -18,7 +17,7 @@ const DisplayImages = ({ name, image, user_text }) => {
       <div className="max-w-[100%] min-w-[100%] mx-auto bg-white  shadow-md overflow-hidden md:max-w-2xl mb-8">
         <div>
         <img
-              src={profile_pic.length!=0 ? profi : e1}
+              src={profi}
               className="w-12 h-12 rounded-[60px] ml-5 mb-3 cursor-pointer inline-block"
               alt="Logo"
             />

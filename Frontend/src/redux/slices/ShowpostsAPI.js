@@ -18,8 +18,6 @@ export const Showpost = createAsyncThunk(
 );
 
 
-
-
 export const Allposts = createAsyncThunk(
   "Allpost",
 
@@ -32,7 +30,6 @@ export const Allposts = createAsyncThunk(
     }
   }
 );
-
 
 
 const Showslice = createSlice({

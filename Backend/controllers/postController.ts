@@ -46,18 +46,26 @@ const Deleteposts = async (req: Request, res: Response) => {};
 
 const Add_admin = async (req: Request, res: Response) => {
   const token = req.params.id;
+
   const image = req.file?.filename;
-  console.log("Image name: ")
-  console.log(image);
 
   try {
-    const result = await Post.updateMany(
-      { token },
-      { $set: { user_image: image } },
-      { $upsert: true} 
-    );
+    const existingPost = await Post.findOne({ token });
 
-    res.status(202).json({ result, message: "Added piccuuu" });
+    if (!existingPost) {
+      const newPost = new Post({
+        token: token,
+        user_image: image,
+      });
+      await newPost.save();
+      res.status(202).json({ message: "New post created with image", post: newPost });
+    } else {
+      const result = await Post.updateMany(
+        { token },
+        { $set: { user_image: image } }
+      );
+      res.status(202).json({ message: "Existing posts updated with image", result });
+    }
   } catch (error) {
     res.status(500).json({ error });
   }
@@ -81,7 +89,7 @@ const Show_Admin = async (req: Request, res: Response) => {
 
 
 const All_posts = async(req:Request, res:Response)=>{
-  
+
       try{
         const posts = await Post.find({});
         return res.status(202).json({posts});
@@ -91,6 +99,29 @@ const All_posts = async(req:Request, res:Response)=>{
         return res.status(500).json({ error: "Internal server error" });
       }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const Add_adminname = async (req:Request,res:Response) =>{
 
 // }

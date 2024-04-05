@@ -3,9 +3,9 @@ import {
   Addposts,
   Deleteposts,
   Showposts,
-  Add_admin, 
+  Add_admin,
   Show_Admin,
-  All_posts
+  All_posts,
 } from "../controllers/postController";
 import multer from "multer";
 
@@ -24,10 +24,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 router.post("/posts", upload.single("image"), Addposts);
-router.post("/admin/:id", upload.single("admin_image"), Add_admin );
+router.post("/admin/:id", upload.single("admin_image"), Add_admin);
 router.delete("/posts", Deleteposts);
 router.get("/admin/:id", Show_Admin);
-router.get("/",All_posts);
-
+router.get("/", All_posts);
 
 export default router;

@@ -43,12 +43,12 @@ const Posts = () => {
     const formData = new FormData();
     formData.append("name", e.currentTarget.name.value);
     formData.append("image", e.currentTarget.image.files[0]); 
-    console.log(e.currentTarget.image.files[0]);
     formData.append("token", token);
     formData.append("admin", admin_name.text);
 
     dispatch(Addpost(formData));
     setget(!get);
+    e.currentTarget.name.value = "";
   
 
   };
@@ -73,8 +73,8 @@ const Posts = () => {
             />
             <input
               type="text"
-              placeholder="Write your thought here"
-              className="border-yellow-300 ml-5 outline-none"
+              placeholder="Write your thoughts here"
+              className="border-yellow-300 ml-10 outline-none pr-10 w-full"
               name="name"
             />
           </div>
@@ -141,6 +141,7 @@ const Posts = () => {
                 name={data.name || ""}
                 image={data.images}
                 user_text={data.user_text}
+                user_image={data.user_image}
                 key={index}
               />
             ))

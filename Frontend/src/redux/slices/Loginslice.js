@@ -5,7 +5,7 @@ import { createSlice} from "@reduxjs/toolkit";
 export const LoginSlice = createSlice({
     name: "login",
     initialState:{
-        text:"log out"
+        text:"Login"
     },
     reducers: {
         ChangeLogin(state, action) {
