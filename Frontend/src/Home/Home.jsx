@@ -4,7 +4,7 @@ import Menu from './Menu'
 import Suggested from './Suggested'
 
 
-const Home : React.FC= () => {
+const Home = () => {
   return (
     <>
     <div className='flex flex-row'>

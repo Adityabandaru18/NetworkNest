@@ -3,34 +3,28 @@ import { LiaVideoSolid } from "react-icons/lia";
 import { GoPaperclip } from "react-icons/go";
 import { Button } from "@chakra-ui/react";
 import DisplayImages from "./Displayimages";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import e1 from "../assets/e1.jpg";
-import { rootState } from "../redux/store";
 import axios from "axios";
-import {useEffect, useState} from "react";
-import { useCallback } from 'react';
-
-// interface Post {
-//   name: string;
-//   image: File;
-// }
-interface Datafetch{
-  name: string,
-  images:  string,
-  user_text: string,
-
-}
+import { useEffect, useState } from "react";
+import { useCallback } from "react";
+import  {Addpost}  from "../redux/slices/AddpostsAPI";
+import {Showpost} from "../redux/slices/ShowpostsAPI";
+import React from "react";
 
 
-const Posts: React.FC = () => {
-  const login: string = useSelector((state: rootState) => state.Login.text);
-  // const postdata = useSelector((state: rootState) => state.post);
-  const profile = useSelector((state: rootState) => state.profile);
-  const token = useSelector((state: rootState) => state.token.text);
-  const admin_name = useSelector((state: rootState) => state.Admin);
-  const [fetchedData, setFetchedData] = useState<Datafetch[]>([]);
-  const [get,setget] = useState(false);
-  // const dispatch = useDispatch();
+const Posts = () => {
+  const login= useSelector((state) => state.Login.text);
+  const profile = useSelector((state) => state.profile);
+  const token = useSelector((state) => state.token.text);
+  const admin_name = useSelector((state) => state.Admin);
+  const fetchedData = useSelector((state)=>state.showpost.data);
+  const profile_pic = useSelector(state => state.admin_profile.data)
+  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || " ";
+  console.log(profi);
+
+  const [get, setget] = useState(false);
+  const dispatch = useDispatch();
 
   const upload = () => {
     if (login === "Login") {
@@ -38,59 +32,32 @@ const Posts: React.FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (login === "Login") {
       alert("Please login to upload your posts");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("name", e.currentTarget.name.value);
-    formData.append("image", e.currentTarget.image.files[0]); // Get the first file from the input
-    formData.append("token",token);
-    formData.append("admin",admin_name.text);
+    formData.append("image", e.currentTarget.image.files[0]); 
+    console.log(e.currentTarget.image.files[0]);
+    formData.append("token", token);
+    formData.append("admin", admin_name.text);
+
+    dispatch(Addpost(formData));
+    setget(!get);
   
-    try {
-      const response = await axios.post("http://localhost:4000/backend/posts", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data" // Set the correct content type for file upload
-        }
-       
-      
-      }
-      );
-      console.log(response);
-      setget(!get)
-      // console.log("Name added successfully to the database");
-      // console.log(response.data); // Log any response from the server
-  
-      // const newPost: Post = { name: e.currentTarget.name.value, image: e.currentTarget.image.files[0] };
-      // dispatch(addPost(newPost)); // Dispatched the postdata
-    } catch (error) {
-      console.error("Error occurred in the Posts.tsx page:", error);
-    }
 
   };
- const ft=token;
-const fetchImages = useCallback(async () => {
-  try {
-    const response = await axios.get(`http://localhost:4000/backend/posts/${ft}`);
-    const { data } = response; 
-    console.log("Get function");
-    setFetchedData(data.posts)
-    console.log(data.posts)
-    console.log(data);
-  } catch (error) {
-    console.error("Error occurred while fetching data:", error);
-  }
-}, []);
 
-useEffect(() => {
-  fetchImages(); 
-}, [fetchImages]);
-  
+
+  useEffect(() => {
+   dispatch(Showpost(token))
+  }, [get]);
+
   return (
     <div>
       <div
@@ -100,7 +67,7 @@ useEffect(() => {
         <form onSubmit={handleSubmit}>
           <div className="h-[50%] flex flex-row items-center">
             <img
-              src={profile.image ? URL.createObjectURL(profile.image) : e1}
+              src={profile_pic.length!=0 ? profi : e1}
               className="w-12 h-12 rounded-[60px] ml-5 mb-3 cursor-pointer"
               alt="Logo"
             />
@@ -168,14 +135,16 @@ useEffect(() => {
         </form>
       </div>
       <ul>
-      {fetchedData ? fetchedData.map((data, index) => (
-          <DisplayImages
-            name={data.name || ""}
-            image={data.images}
-            user_text={data.user_text}
-            key={index}
-          />
-        )): null}
+        {fetchedData
+          ? fetchedData.map((data, index) => (
+              <DisplayImages
+                name={data.name || ""}
+                image={data.images}
+                user_text={data.user_text}
+                key={index}
+              />
+            ))
+          : null}
       </ul>
     </div>
   );

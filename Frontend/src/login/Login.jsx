@@ -2,26 +2,26 @@ import logo1 from "../assets/logo (2).png";
 import { useState } from "react";
 import title from "../assets/title.png";
 import "./styles.css";
-import { app1 } from "../firebase/Firebase.ts";
+import { app1 } from "../firebase/Firebase.js";
 import {
   GoogleLoginButton,
-  GithubLoginButton
+  GithubLoginButton,
 } from "react-social-login-buttons";
+import React from "react";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   GithubAuthProvider,
-  signInWithPopup
+  signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { ChangeLogin } from "../redux/slices/Loginslice.ts";
-import { Alert, AlertIcon } from '@chakra-ui/react';
-import { addadmin } from "../redux/slices/adminslice.ts";
-import { AddToken } from "../redux/slices/tokenslice.ts";
-// import UserModal from "./UserModal.tsx";
+import { ChangeLogin } from "../redux/slices/Loginslice.js";
+import { Alert, AlertIcon } from "@chakra-ui/react";
+import { addadmin } from "../redux/slices/adminslice.js";
+import { AddToken } from "../redux/slices/tokenslice.js";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -32,8 +32,6 @@ const Login = () => {
   const [showError, setShowError] = useState("");
   const [show, setShow] = useState(false);
   const [admin, setadmin] = useState("");
-
-
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,7 +45,7 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-    setShow(true);
+        setShow(true);
       })
       .catch((error) => {
         console.log(error);
@@ -59,11 +57,10 @@ const Login = () => {
     signInWithEmailAndPassword(auth, emailL, passL)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-          dispatch(AddToken(userC.user.uid));
-      setShow(true);
+        dispatch(AddToken(userC.user.uid));
+        setShow(true);
       })
       .catch((e) => {
- 
         setShowError(e.message);
       });
   };
@@ -72,9 +69,8 @@ const Login = () => {
     signInWithPopup(auth, provider1)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-          dispatch(AddToken(userC.user.uid));
-      setShow(true);
-
+        dispatch(AddToken(userC.user.uid));
+        setShow(true);
       })
       .catch((error) => {
         setShowError(error);
@@ -86,7 +82,7 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-    setShow(true);
+        setShow(true);
       })
       .catch((error) => {
         setShowError(error);
@@ -99,7 +95,6 @@ const Login = () => {
 
   return (
     <>
-    
       <div className="flex flex-row justify-evenly items-center w-[100%] h-[100vh]">
         <div className="image">
           <img src={logo1} />
@@ -160,7 +155,7 @@ const Login = () => {
                 <br />
                 <div>
                   {showError ? (
-                    <Alert status='error'>
+                    <Alert status="error">
                       <AlertIcon />
                       {showError}
                     </Alert>
@@ -214,7 +209,7 @@ const Login = () => {
                 <br />
                 <div>
                   {showError ? (
-                    <Alert status='error'>
+                    <Alert status="error">
                       <AlertIcon />
                       {showError}
                     </Alert>
@@ -248,16 +243,14 @@ const Login = () => {
           </div>
         </div>
 
-   {/* Modal for the username */}
+        {/* Modal for the username */}
 
         {show && (
           <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 backdrop-blur-lg">
             <div className="modal-box bg-gray-800 max-w-md mx-auto p-7 rounded-lg shadow-lg text-white">
-
               <div className="mt-4">
                 <label htmlFor="username" className="text-gray-300 mb-3">
                   What should we call you :)
-
                 </label>
                 <br />
                 <input
@@ -274,7 +267,6 @@ const Login = () => {
                   className="btn bg-blue-500 hover:bg-blue-600  px-8 py-1 mt-4 rounded"
                   onClick={() => {
                     if (admin != "") {
-
                       setShow(false);
                       dispatch(addadmin(admin));
                       navigate("/");
@@ -286,10 +278,8 @@ const Login = () => {
               </div>
             </div>
           </div>
-
         )}
       </div>
-
     </>
   );
 };

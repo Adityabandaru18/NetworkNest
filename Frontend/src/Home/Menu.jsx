@@ -9,19 +9,16 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import e1 from "../assets/e1.jpg";
 import "./styles.css";
-import { rootState } from "../redux/store";
+import React from "react";
 
-interface profile1 {
-  image: Blob | MediaSource | null;
-}
 
-interface Loo {
-  text: string;
-}
 const Menu = () => {
-  const postdata: profile1 = useSelector((state: rootState) => state.profile);
-  const log: Loo = useSelector((state: rootState) => state.Login);
-
+  const postdata = useSelector((state) => state.profile);
+  const log = useSelector((state) => state.Login);
+  const profile_pic = useSelector(state => state.admin_profile.data)
+  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || "";
+  console.log(profile_pic.length);
+  console.log(profi);
   return (
     <div className="h-[100vh] sticky top-0 flex flex-col justify-between">
       <div>
@@ -70,8 +67,8 @@ const Menu = () => {
       <div>
         <div>
           <NavLink to="/admin">
-            <img
-              src={postdata.image ? URL.createObjectURL(postdata.image) : e1}
+            <img   
+            src={profile_pic.length!=0 ? profi : e1} 
               className="w-20 h-20 rounded-[60px] ml-5 mb-3 cursor-pointer"
               id="lopo1"
             />
