@@ -46,6 +46,7 @@ export const Addadmin = createAsyncThunk(
   }
 )
 
+
 const Addslice = createSlice({
   name: "Addpost",
   initialState: {

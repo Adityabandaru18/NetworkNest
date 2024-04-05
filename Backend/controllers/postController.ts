@@ -79,9 +79,35 @@ const Show_Admin = async (req: Request, res: Response) => {
   }
 };
 
+
+const All_posts = async(req:Request, res:Response)=>{
+  
+      try{
+        const posts = await Post.find({});
+        return res.status(202).json({posts});
+      }
+      catch(error){
+        console.error("Error occurred while fetching posts:", error);
+        return res.status(500).json({ error: "Internal server error" });
+      }
+}
 // const Add_adminname = async (req:Request,res:Response) =>{
 
 // }
+// const token_found = async (req: Request, res:Response) => {
+//     try {
+//         const token = req.params.id;
+//         const found = await Post.find({ token });
+//         console.log(found);
+//         if (found.length > 0) { // Check if any documents are found
+//             res.status(202).send("1");
+//         } else {
+//             res.status(303).send("0");
+//         }
+//     } catch (error) {
+//         res.status(404).json({ error });
+//     }
+// };
 
 // const Show_adminname = async (req:Request,res:Response) =>{
 
@@ -101,4 +127,4 @@ const Show_Admin = async (req: Request, res: Response) => {
 
 // }
 
-export { Addposts, Deleteposts, Showposts, Add_admin, Show_Admin };
+export { Addposts, Deleteposts, Showposts, Add_admin, Show_Admin, All_posts};

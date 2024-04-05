@@ -1,14 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
 import "./styles.css";
-
-
+import { useEffect } from "react";
+import { Showpost } from "../redux/slices/ShowpostsAPI";
 
 const Displayuser= () => {
   const postdata = useSelector((state) => state.post);
   const token = useSelector((state ) => state.token.text);
   const fetchedData = useSelector((state)=>state.showpost.data);
+  const dispatch = useDispatch();
 
+  useEffect(()=>{
+   dispatch(Showpost(token));
+  },[dispatch])
 
   return (
     <>

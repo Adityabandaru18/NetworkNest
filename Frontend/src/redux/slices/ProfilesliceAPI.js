@@ -20,7 +20,6 @@ export const Showprofile = createAsyncThunk(
 const Showprofileslice = createSlice({
   name: "Showprofile",
   initialState: {
-  
     data: []
   },
   extraReducers: (builder) => {
@@ -28,7 +27,7 @@ const Showprofileslice = createSlice({
     //   state.isLoading = true;
     });
     builder.addCase(Showprofile.fulfilled, (state,action) => {
-        state.isLoading = true;
+
         state.data=action.payload;
       });
     builder.addCase(Showprofile.rejected,(state) => {

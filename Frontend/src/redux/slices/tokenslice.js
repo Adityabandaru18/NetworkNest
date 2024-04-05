@@ -9,6 +9,7 @@ export const TokenSlice = createSlice({
     reducers: {
         AddToken(state, action) {
             state.text = action.payload;
+   
         }
     }
 });

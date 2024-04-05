@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCallback } from "react";
 import  {Addpost}  from "../redux/slices/AddpostsAPI";
-import {Showpost} from "../redux/slices/ShowpostsAPI";
+import { Allposts} from "../redux/slices/ShowpostsAPI";
 import React from "react";
 
 
@@ -18,7 +18,7 @@ const Posts = () => {
   const profile = useSelector((state) => state.profile);
   const token = useSelector((state) => state.token.text);
   const admin_name = useSelector((state) => state.Admin);
-  const fetchedData = useSelector((state)=>state.showpost.data);
+  const fetchedData = useSelector((state)=>state.showpost.Alldata);
   const profile_pic = useSelector(state => state.admin_profile.data)
   const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || " ";
   console.log(profi);
@@ -55,13 +55,13 @@ const Posts = () => {
 
 
   useEffect(() => {
-   dispatch(Showpost(token))
+   dispatch( Allposts())
   }, [get]);
 
   return (
     <div>
       <div
-        className="w-[90%] m-auto h-[150px] mt-3 flex flex-col"
+        className="w-[100%] m-auto h-[150px] mt-3 flex flex-col"
         id="none_div"
       >
         <form onSubmit={handleSubmit}>

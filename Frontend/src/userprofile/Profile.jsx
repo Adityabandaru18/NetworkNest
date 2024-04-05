@@ -63,8 +63,8 @@ const Profile = () => {
         </div>
         <div className="w-[80%]">
           <div className="w-[90%] m-auto flex flex-col mt-8">
-            <div className="w-[100%] h-[30%] flex flex-row justify-center">
-              <div className="w-[30%]">
+            <div className="w-[100%] h-[30%] flex flex-row justify-evenly">
+              <div className="w-[40%] md:w-[20%] flex justify-center items-center relative top-4 right-10">
                 <img
                   src={profile_pic.length!=0 ? profi : e1}
                   className="w-32 h-32 rounded-full ml-5 mb-3 cursor-pointer"
@@ -79,25 +79,25 @@ const Profile = () => {
                   onChange={handleFileChange}
                   name="admin_image"                />
               </div>
-              <div className="w-[60%] mr-40 mt-9" id="admin_panel">
-                <div className="block">
+              <div className="w-[40%] mt-9 flex flex-col relative md:right-10" id="admin_panel">
+                <div className="flex items-center md:justify-evenly justify-around">
                   {admin_name.text ? (
                     <p className="inline-block text-2xl">{admin_name.text}</p>
                   ) : (
-                    <p className="inline text-2xl">Admin</p>
+                    <p className="inline text-xl md:text-[26px]">Admin</p>
                   )}
                   <button
-                    className="border border-transparent text-sm font-medium rounded-md bg-indigo-600 hover:bg-indigo-700 relative right-3"
-                    onClick={handleImageChange}
+                  className="p-1 md:p-2 text-xs md:text-sm border border-blue-300 rounded-[10px] hover:text-blue-600 font-semibold bg-blue-600 text-white hover:bg-white"
+                         onClick={handleImageChange}
                   >
-                    Update profile pic
+                    Edit profile
                   </button>
                 </div>
-                <div className="mt-3">
+                <div className="mt-9 flex justify-center items-center space-x-6">
                   {/* Display follower and following counts */}
-                  {/* <p className="inline-block mr-3 text-m">z Posts</p>
-                <p className="inline-block mr-3 text-m">x followers</p>
-                <p className="inline-block text-xl">y followers</p> */}
+                  <p className="inline-block text-xs md:text-[19px]">Z Posts</p>
+                <p className="inline-block text-xs md:text-[19px]">X followers</p>
+                <p className="inline-block text-xs md:text-[19px]">Y followers</p>
                 </div>
               </div>
             </div>

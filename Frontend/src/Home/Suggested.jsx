@@ -4,7 +4,7 @@ const Suggested = () => {
   return (
    <>
    <div className="sticky top-0">
-    Suggested
+    <p className="text-center">Suggested</p>
    </div>
    
    </>

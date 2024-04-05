@@ -4,7 +4,8 @@ import {
   Deleteposts,
   Showposts,
   Add_admin, 
-  Show_Admin
+  Show_Admin,
+  All_posts
 } from "../controllers/postController";
 import multer from "multer";
 
@@ -26,5 +27,7 @@ router.post("/posts", upload.single("image"), Addposts);
 router.post("/admin/:id", upload.single("admin_image"), Add_admin );
 router.delete("/posts", Deleteposts);
 router.get("/admin/:id", Show_Admin);
+router.get("/",All_posts);
+
 
 export default router;

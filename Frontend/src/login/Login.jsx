@@ -32,6 +32,9 @@ const Login = () => {
   const [showError, setShowError] = useState("");
   const [show, setShow] = useState(false);
   const [admin, setadmin] = useState("");
+  // const t_found = useSelector(state => state.addpost);
+  // console.log(t_found);
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,6 +48,7 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
+        // dispatch(token_found(token));
         setShow(true);
       })
       .catch((error) => {
@@ -58,7 +62,6 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-        setShow(true);
       })
       .catch((e) => {
         setShowError(e.message);
@@ -69,7 +72,7 @@ const Login = () => {
     signInWithPopup(auth, provider1)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        dispatch(AddToken(userC.user.uid));
+        dispatch(AddToken(userC.user.uid));    
         setShow(true);
       })
       .catch((error) => {
