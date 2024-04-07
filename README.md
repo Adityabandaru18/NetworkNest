@@ -12,7 +12,7 @@ Welcome to our full stack social media application! This project aims to provide
 - **Authentication**: Firebase
 
 # Project Status
-## Completed tasks
+## Completed
 - User authentication
 - Adding posts, Changing profile picture (In multi pages)
 - Suggesting our Network Users
