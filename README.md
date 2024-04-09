@@ -26,8 +26,8 @@ Welcome to our full stack social media application! This project aims to provide
 
 ## Bugs
 - CORS policy
-- Inefficient Data management and retrieval from Server to Client.
-- Asks username whnever user logs in.
+- Inefficient Data management and retrieval from Server to Client. (Cleared)
+- Asks username whnever user logs in. (Cleared)
 - Some UI related Modifications
 
 
