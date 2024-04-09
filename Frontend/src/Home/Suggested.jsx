@@ -24,25 +24,28 @@ const Suggested = () => {
   return (
     <>
       <div className="sticky top-5">
-        <p className="text-center text-2xl font-normal">NetWork Users</p>
+        <p className="text-center text-2xl font-semibold">NetWork Users</p>
         <br />
+    
       
-          {fetchedData
-            ? fetchedData
-              .filter((data, index, self) => {
-                return (
-                  data.name !== "" &&
-                  self.findIndex((item) => item.name === data.name && item.token !== user_token) === index
-                );
-              })
-              .map((data, index) => (
-                <SuggestedUsers
-                  name={data.name}
-                  user_image={data.user_image}
-                  key={index}
-                />
-              ))
-            : null}
+        {fetchedData
+  ? fetchedData
+      .filter((data, index, self) => {
+        return (
+          data.name !== "" &&
+          self.findIndex((item) => item.token === data.token && item.token !== user_token) === index
+        );
+      })
+      .map((data, index) => (
+        <React.Fragment key={index}>
+          <SuggestedUsers
+            name={data.name}
+            user_image={data.user_image}
+          />
+        </React.Fragment>
+      ))
+  : null}
+
 
 
 

@@ -30,31 +30,26 @@ export const Allposts = createAsyncThunk(
     }
   }
 );
-
-
 const Showslice = createSlice({
   name: "Showslice",
   initialState: {
-  
     data: [],
-    Alldata:[]
+    Alldata: [],
+    latestPostedPicture: null, 
   },
   extraReducers: (builder) => {
     builder.addCase(Showpost.pending, (state) => {
-    //   state.isLoading = true;
     });
-    builder.addCase(Showpost.fulfilled, (state,action) => {
-        state.isLoading = true;
-        state.data = action.payload;
-      });
-    builder.addCase(Showpost.rejected,(state) => {
-        // state.isLoading = true;
-        
-      });
+    builder.addCase(Showpost.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
+    builder.addCase(Showpost.rejected, (state) => {
+    });
 
-      builder.addCase(Allposts.fulfilled,(state,action)=>{
-        state.Alldata = action.payload;
-      })
+    builder.addCase(Allposts.fulfilled, (state, action) => {
+      state.latestPostedPicture = action.payload[0]; // Assuming action.payload is an array of posts and you want to display the first post
+      state.Alldata = action.payload;
+    });
   },
 });
 

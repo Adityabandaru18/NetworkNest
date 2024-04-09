@@ -5,6 +5,7 @@ export const Showprofile = createAsyncThunk(
   "showprofile",
 
   async (token) => {
+    
     try {
       const response = await axios.get(`http://localhost:4000/backend/admin/${token}`);
       console.log("redux profile get");

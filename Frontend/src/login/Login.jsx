@@ -22,6 +22,11 @@ import { ChangeLogin } from "../redux/slices/Loginslice.js";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { addadmin } from "../redux/slices/adminslice.js";
 import { AddToken } from "../redux/slices/tokenslice.js";
+import { useSelector } from "react-redux";
+// import { Showprofile } from "../redux/slices/ProfilesliceAPI.js";
+import axios from "axios";
+import { Add_user } from "../redux/slices/AddpostsAPI.js";
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -30,12 +35,11 @@ const Login = () => {
   const [emailL, setEmailL] = useState("");
   const [passL, setPassL] = useState("");
   const [showError, setShowError] = useState("");
-  const [show, setShow] = useState(false);
   const [admin, setadmin] = useState("");
-  // const t_found = useSelector(state => state.addpost);
-  // console.log(t_found);
-
-
+  const name = useSelector((state) => state.admin_profile.data);
+  const [t_found, setT] = useState(1);
+  const [show, setshow] = useState(false);
+  const [token1,settoken]= useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -43,12 +47,26 @@ const Login = () => {
   const provider1 = new GoogleAuthProvider();
   const provider2 = new GithubAuthProvider();
 
+
+  const Check_token = async (token) => {
+    let response = await axios.get(`http://localhost:4000/backend/token1/${token}`);
+    console.log(response.data);
+    setT(parseInt(response.data, 10));
+    if (!response.data) {
+      setshow(true);
+    }
+    else{
+      navigate("/");
+    }
+  }
+
   const handleSignUp = () => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-        setShow(true);
+        settoken(userC.user.uid);
+        setshow(true)
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +79,6 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-
         navigate("/");
       })
       .catch((e) => {
@@ -73,9 +90,11 @@ const Login = () => {
     signInWithPopup(auth, provider1)
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
-        dispatch(AddToken(userC.user.uid));    
-        setShow(true);
-     
+        dispatch(AddToken(userC.user.uid));
+        settoken(userC.user.uid);
+        Check_token(userC.user.uid);
+
+
       })
       .catch((error) => {
         setShowError(error || "");
@@ -87,7 +106,8 @@ const Login = () => {
       .then((userC) => {
         dispatch(ChangeLogin("Log out"));
         dispatch(AddToken(userC.user.uid));
-        setShow(true);
+        settoken(userC.user.uid);
+        Check_token(userC.user.uid);
       })
       .catch((error) => {
         setShowError(error);
@@ -272,8 +292,9 @@ const Login = () => {
                   className="btn bg-blue-500 hover:bg-blue-600  px-8 py-1 mt-4 rounded"
                   onClick={() => {
                     if (admin != "") {
-                      setShow(false);
                       dispatch(addadmin(admin));
+                      dispatch(Add_user({ token: token1, name: admin }));
+                      setshow(false);
                       navigate("/");
                     }
                   }}
@@ -283,7 +304,7 @@ const Login = () => {
               </div>
             </div>
           </div>
-        )}
+        ) }
       </div>
     </>
   );

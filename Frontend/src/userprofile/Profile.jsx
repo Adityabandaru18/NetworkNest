@@ -18,7 +18,7 @@ const Profile = () => {
   const profile_pic = useSelector(state => state.admin_profile.data);
   const [get, setget] = useState(false);
   console.log(profile_pic);
-  
+  let formData;
   const handleFileChange = async (e) => {
     console.log(login);
     if (login === "Login") {
@@ -26,18 +26,15 @@ const Profile = () => {
     } else {
       const file = e.target.files[0];
       console.log(file);
-      const formData = new FormData();
+      formData = new FormData();
       formData.append("admin_image", file);
       if (file) {
-        
         dispatch(Addadmin({ token: token, formData: formData }));
         setget(!get);
-        
-        
       }
     }
   };
-  
+
   const handleImageChange = () => {
     if (login === "Login") {
       alert("Please login to update the profile picture");
@@ -48,14 +45,15 @@ const Profile = () => {
       setget(!get);
     }
   };
-  
-  
-  
+
+
+
   useEffect(() => {
     dispatch(Showprofile(token));
-  }, [get,dispatch]);
 
-  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || "";
+  }, [get]);
+
+  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}`;
   console.log(profi);
 
   return (
@@ -68,12 +66,13 @@ const Profile = () => {
           <div className="w-[90%] m-auto flex flex-col mt-8">
             <div className="w-[100%] h-[30%] flex flex-row justify-evenly">
               <div className="w-[40%] md:w-[20%] flex justify-center items-center relative top-4 right-10">
-                <img
+                {profi && <img
                   src={profile_pic.length != 0 ? profi : e1}
                   className="w-32 h-32 rounded-full ml-5 mb-3 cursor-pointer"
                   alt="Profile"
                   id="lopo11"
                 />
+                }
                 <input
                   type="file"
                   accept="image/*"

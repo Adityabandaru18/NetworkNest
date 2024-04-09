@@ -1,17 +1,21 @@
 import { Schema, model } from "mongoose";
 
+
 const postSchema = new Schema(
   {
     token: {
       type: String,
       required: true,
     },
-    user_image: String,
+    user_image: {
+      type: String,
+      default: "../uploads/e1.jpg"
+    },
     user_text: String,
     images: String,
     name: {
       type: String,
-      required: true,
+      required: true, 
     },
   },
   {

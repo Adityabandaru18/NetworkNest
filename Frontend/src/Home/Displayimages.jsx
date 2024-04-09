@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { FaHeart, FaComment, FaShare } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import e1 from "../assets/e1.jpg";
 
 const DisplayImages = ({ name, image, user_text, user_image }) => {
   const [liked, setLiked] = useState(false);
-  const profi = `http://localhost:4000/uploads/${user_image}` || " ";
-  // console.log(profi);
+  const token = useSelector((state) => state.token.text);
 
+  const profi = `http://localhost:4000/uploads/${user_image}`;
   const toggleLike = () => {
     setLiked(!liked);
   };
+
 
   return (
     <>
@@ -35,9 +35,9 @@ const DisplayImages = ({ name, image, user_text, user_image }) => {
             <div className="flex flex-row">
               <FaHeart
                 className={`h-6 w-6 ${
-                  liked ? "text-red-500" : "text-gray-500 "
+                 liked ? "text-red-500" : "text-gray-500 "
                 }`}
-                onClick={toggleLike}
+                onClick={ token && toggleLike}
               />
               <FaComment className="h-6 w-6 mx-4 text-gray-500" />
               <FaShare className="h-6 w-6 text-gray-500" />

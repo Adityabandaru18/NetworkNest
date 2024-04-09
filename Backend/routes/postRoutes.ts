@@ -6,6 +6,8 @@ import {
   Add_admin,
   Show_Admin,
   All_posts,
+  Foundt,
+  Add_name
 } from "../controllers/postController";
 import multer from "multer";
 
@@ -28,5 +30,7 @@ router.post("/admin/:id", upload.single("admin_image"), Add_admin);
 router.delete("/posts", Deleteposts);
 router.get("/admin/:id", Show_Admin);
 router.get("/", All_posts);
+router.get("/token1/:id",Foundt);
+router.post("/user/:id",Add_name);
 
 export default router;

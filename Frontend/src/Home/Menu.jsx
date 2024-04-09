@@ -6,19 +6,27 @@ import { BsCameraReels } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import { LuMessageSquarePlus } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import e1 from "../assets/e1.jpg";
 import "./styles.css";
 import React from "react";
-
+import { useEffect } from "react";
+import { useIds } from "@chakra-ui/react";
+import { Showprofile } from "../redux/slices/ProfilesliceAPI";
 
 const Menu = () => {
   const postdata = useSelector((state) => state.profile);
   const log = useSelector((state) => state.Login);
   const profile_pic = useSelector(state => state.admin_profile.data)
-  const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || "";
-  console.log(profile_pic.length);
-  console.log(profi);
+  const token = useSelector(state => state.token.text);
+  const dispatch = useDispatch();
+  let profi = `http://localhost:4000/uploads/${profile_pic.user_image}`
+  
+
+
+  useEffect(()=>{
+dispatch(Showprofile(token));
+  },[]);
   return (
     <div className="h-[100vh] sticky top-0 flex flex-col justify-between">
       <div>
@@ -68,7 +76,7 @@ const Menu = () => {
         <div>
           <NavLink to="/admin">
             <img   
-            src={profile_pic.length!=0 ? profi : e1} 
+           src={profile_pic.length!=0 ? profi : e1}
               className="w-20 h-20 rounded-[60px] ml-5 mb-3 cursor-pointer"
               id="lopo1"
             />

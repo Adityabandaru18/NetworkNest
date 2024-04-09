@@ -5,9 +5,7 @@ import { Button } from "@chakra-ui/react";
 import DisplayImages from "./Displayimages";
 import { useSelector, useDispatch } from "react-redux";
 import e1 from "../assets/e1.jpg";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useCallback } from "react";
 import  {Addpost}  from "../redux/slices/AddpostsAPI";
 import { Allposts} from "../redux/slices/ShowpostsAPI";
 import React from "react";
@@ -44,7 +42,6 @@ const Posts = () => {
     formData.append("name", e.currentTarget.name.value);
     formData.append("image", e.currentTarget.image.files[0]); 
     formData.append("token", token);
-    formData.append("admin", admin_name.text);
 
     dispatch(Addpost(formData));
     setget(!get);
@@ -53,10 +50,9 @@ const Posts = () => {
 
   };
 
-
   useEffect(() => {
    dispatch( Allposts())
-  }, [get]);
+  }, [fetchedData]);
 
   return (
     <div>
@@ -126,7 +122,7 @@ const Posts = () => {
                 />
               </li>
               <li>
-                <Button colorScheme="green" type="submit">
+                <Button colorScheme="green" type="submit" className="bg-indigo-900 text-white">
                   Post
                 </Button>
               </li>
@@ -135,18 +131,22 @@ const Posts = () => {
         </form>
       </div>
       <ul>
-        {fetchedData
-          ? fetchedData.map((data, index) => (
-              <DisplayImages
-                name={data.name || ""}
-                image={data.images}
-                user_text={data.user_text}
-                user_image={data.user_image}
-                key={index}
-              />
-            ))
-          : null}
-      </ul>
+  {fetchedData
+    ? [...fetchedData].reverse().map((data, index) => (
+      data.images && (
+
+        <DisplayImages
+        name={data.name || ""}
+        image={data.images}
+        user_text={data.user_text}
+        user_image={data.user_image}
+        key={index}
+        />
+      )
+      ))
+    : null}
+</ul>
+
     </div>
   );
 };
