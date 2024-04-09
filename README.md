@@ -31,6 +31,7 @@ Welcome to our full stack social media application! This project aims to provide
 - Making online friends
 - Chatting between Network Friends
 - Data rendering and Displaying in real time effieciently
+- Updating Loading effect for data fetching for better User experience
 
 ## Bugs
 - CORS policy
