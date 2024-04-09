@@ -8,6 +8,7 @@ const Add_name = async (req: Request, res: Response) => {
     const new_user = new Post({
       name: name,
       token: token,
+      user_image: "1712681747634-443219254e1.jpg"
   
     });
 
@@ -29,7 +30,8 @@ const Addposts = async (req:Request, res:Response)=>{
       name:exist?.name,
       images:image,
       token:token,
-      user_text:name
+      user_text:name,
+      user_image: "1712681747634-443219254e1.jpg"
     })
 
     await new_post.save();

@@ -11,7 +11,6 @@ import e1 from "../assets/e1.jpg";
 import "./styles.css";
 import React from "react";
 import { useEffect } from "react";
-import { useIds } from "@chakra-ui/react";
 import { Showprofile } from "../redux/slices/ProfilesliceAPI";
 
 const Menu = () => {
@@ -28,7 +27,7 @@ const Menu = () => {
 dispatch(Showprofile(token));
   },[]);
   return (
-    <div className="h-[100vh] sticky top-0 flex flex-col justify-between">
+    <div className="h-[100vh] sticky top-0 flex flex-col justify-between ">
       <div>
         <NavLink to="/">
           {" "}

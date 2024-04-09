@@ -23,7 +23,7 @@ const Suggested = () => {
 
   return (
     <>
-      <div className="sticky top-5">
+      <div className="sticky top-5 -z-10">
         <p className="text-center text-2xl font-semibold">NetWork Users</p>
         <br />
     

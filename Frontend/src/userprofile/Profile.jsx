@@ -82,10 +82,10 @@ const Profile = () => {
                   name="admin_image" />
               </div>
               <div className="w-[40%] mt-9 flex flex-col relative md:right-10" id="admin_panel">
-                <div className="flex items-center md:justify-evenly justify-around">
-                  {profile_pic.name ? <p className="inline text-xl md:text-[26px]">{profile_pic.name}</p> : <p className="inline text-xl md:text-[26px]">Admin</p>}
+                <div className="flex  md:justify-evenly justify-around flex-col md:flex-row">
+                  {profile_pic.name ? <p className="inline text-xl md:text-[26px] relative left-10">{profile_pic.name}</p> : <p className="inline text-xl md:text-[26px] relative right-6">Admin</p>}
                   <button
-                    className="p-1 md:p-2 text-xs md:text-sm border border-blue-300 rounded-[10px] hover:text-blue-600 font-semibold bg-blue-600 text-white hover:bg-white"
+                    className="p-1 md:p-1 ml-3 md:ml-0 text-xs md:text-sm border border-blue-300 rounded-[10px] hover:text-blue-600 font-semibold bg-blue-600 text-white hover:bg-white relative right-10 mt-2 md:mt-0 md:right-0"
                     onClick={handleImageChange}
                   >
                     Edit profile

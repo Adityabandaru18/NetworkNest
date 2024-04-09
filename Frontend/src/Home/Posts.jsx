@@ -64,7 +64,7 @@ const Posts = () => {
           <div className="h-[50%] flex flex-row items-center">
             <img
               src={profile_pic.length!=0 ? profi : e1}
-              className="w-12 h-12 rounded-[60px] ml-5 mb-3 cursor-pointer"
+              className="max-w-12 max-h-12 min-h-12 min-w-12 rounded-[60px] ml-5 mb-3 cursor-pointer inline-block"
               alt="Logo"
             />
             <input
