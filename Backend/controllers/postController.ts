@@ -31,7 +31,7 @@ const Addposts = async (req:Request, res:Response)=>{
       images:image,
       token:token,
       user_text:name,
-      user_image: "1712681747634-443219254e1.jpg"
+      user_image: exist?.user_image || "1712681747634-443219254e1.jpg" 
     })
 
     await new_post.save();
@@ -82,7 +82,27 @@ const Showposts = async (req: Request, res: Response) => {
   }
 };
 
-const Deleteposts = async (req: Request, res: Response) => {};
+const Deleteposts = async (req: Request, res: Response) => {
+
+ const token = req.params.id;
+ const {image} = req.body;
+ console.log(image);
+ try{
+  const deleted = await Post.findOneAndDelete({images: image, token:token});
+  if(deleted){
+    res.status(202).json({message: "Post deleted successfully"});
+
+  }
+  else{
+    res.status(404).json({message: "Couldn't delete the post"});
+  }
+ }
+ catch(error){
+  console.error("Error occurred while fetching posts:", error);
+    return res.status(500).json({ error: "Internal server error" });
+ }
+
+};
 
 const Add_admin = async (req: Request, res: Response) => {
   const token = req.params.id;
@@ -199,5 +219,5 @@ export {
   Show_Admin,
   All_posts,
   Foundt,
-  Add_name
+  Add_name,
 };

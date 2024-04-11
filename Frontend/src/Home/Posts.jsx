@@ -136,6 +136,7 @@ const Posts = () => {
       data.images && (
 
         <DisplayImages
+        token={data.token}
         name={data.name || ""}
         image={data.images}
         user_text={data.user_text}

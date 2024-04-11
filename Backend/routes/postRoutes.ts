@@ -27,10 +27,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 router.post("/posts", upload.single("image"), Addposts);
 router.post("/admin/:id", upload.single("admin_image"), Add_admin);
-router.delete("/posts", Deleteposts);
 router.get("/admin/:id", Show_Admin);
 router.get("/", All_posts);
 router.get("/token1/:id",Foundt);
 router.post("/user/:id",Add_name);
+router.post("/delete/:id",Deleteposts);
 
 export default router;
