@@ -12,7 +12,7 @@ import React from "react";
 
 
 const Posts = () => {
-  const login= useSelector((state) => state.Login.text);
+  const login = useSelector((state) => state.Login.text);
   const profile = useSelector((state) => state.profile);
   const token = useSelector((state) => state.token.text);
   const admin_name = useSelector((state) => state.Admin);
@@ -46,13 +46,12 @@ const Posts = () => {
     dispatch(Addpost(formData));
     setget(!get);
     e.currentTarget.name.value = "";
-  
 
   };
 
-  useEffect(() => {
-   dispatch( Allposts())
-  }, [get]);
+  // useEffect(() => {
+  //  dispatch( Allposts())
+  // }, [fetchedData]);
 
   return (
     <div>

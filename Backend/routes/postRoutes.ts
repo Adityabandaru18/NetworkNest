@@ -32,5 +32,6 @@ router.get("/", All_posts);
 router.get("/token1/:id",Foundt);
 router.post("/user/:id",Add_name);
 router.post("/delete/:id",Deleteposts);
+router.put("/edit/:id")
 
 export default router;

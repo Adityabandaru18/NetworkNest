@@ -160,41 +160,30 @@ const All_posts = async (req: Request, res: Response) => {
   }
 };
 
-// const Add_adminname = async (req:Request,res:Response) =>{
 
-// }
-// const token_found = async (req: Request, res:Response) => {
-//     try {
-//         const token = req.params.id;
-//         const found = await Post.find({ token });
-//         console.log(found);
-//         if (found.length > 0) { // Check if any documents are found
-//             res.status(202).send("1");
-//         } else {
-//             res.status(303).send("0");
-//         }
-//     } catch (error) {
-//         res.status(404).json({ error });
-//     }
-// };
+const Edit_post = async (req: Request, res: Response) => {
+  const token = req.params.id;
+  const user_image = req.file?.filename;
 
-// const Show_adminname = async (req:Request,res:Response) =>{
+  try {
+    const updatedPost = await Post.findByIdAndUpdate(
+      token, 
+      { user_image: user_image }, 
+      { new: true } 
+    );
 
-//     const token = req.body;
+    if (!updatedPost) {
+      return res.status(404).json({ message: "Post not found" });
+    }
 
-//     try{
+    return res.status(200).json(updatedPost);
+  } catch (error) {
+    console.error("Error updating post:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
-//     }
 
-// }
-
-// const Show_profile = async (req:Request,res:Response) =>{
-//   try{
-//     const token = req.params.id;
-
-//   }
-
-// }
 const Foundt = async (req: Request, res: Response) => {
   let token = req.params.id;
   try {
