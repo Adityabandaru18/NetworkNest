@@ -49,9 +49,9 @@ const Posts = () => {
 
   };
 
-  // useEffect(() => {
-  //  dispatch( Allposts())
-  // }, [fetchedData]);
+  useEffect(() => {
+   dispatch( Allposts())
+  }, [fetchedData]);
 
   return (
     <div>

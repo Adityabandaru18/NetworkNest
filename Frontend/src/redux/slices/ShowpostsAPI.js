@@ -44,6 +44,20 @@ export const Deletepost = createAsyncThunk(
     }
   }
 )
+
+export const Editpost = createAsyncThunk(
+  "Editposts",
+  async ({token, image}) => {
+    try{
+      const response = await axios.post(`http://localhost:4000/backend/edit/${token}`,{image});
+      console.log("Post Updated in redux");
+      console.log(response);
+    }
+    catch (error) {
+      console.error("Error occurred while fetching data:", error);
+    }
+  }
+)
 const Showslice = createSlice({
   name: "Showslice",
   initialState: {

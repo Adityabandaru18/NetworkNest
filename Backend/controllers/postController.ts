@@ -209,4 +209,5 @@ export {
   All_posts,
   Foundt,
   Add_name,
+  Edit_post
 };
