@@ -6,7 +6,7 @@ Welcome to our full stack social media application! This project aims to provide
 
 - **Frontend**: React.js
 - **Backend**: Node.js, Express.js
-- **Styling**: TailwindCSS, Vanilla CSS
+- **Styling**: Tailwind CSS, Vanilla CSS
 - **Database**: MongoDB
 - **Libraries**: MaterialUI, ChakraUI, Reduxtoolkit
 - **Authentication**: Firebase
@@ -30,13 +30,10 @@ Welcome to our full stack social media application! This project aims to provide
 - Post editing, Deleting.
 - Making online friends
 - Chatting between Network Friends
-- Data rendering and Displaying in real time effieciently
 - Updating Loading effect for data fetching for better User experience
 
 ## Bugs
 - CORS policy
-- Inefficient Data management and retrieval from Server to Client. (Cleared)
-- Asks username whnever user logs in. (Cleared)
 - Some UI related Modifications
 
 
