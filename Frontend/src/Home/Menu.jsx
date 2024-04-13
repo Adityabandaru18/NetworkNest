@@ -14,7 +14,6 @@ import { useEffect } from "react";
 import { Showprofile } from "../redux/slices/ProfilesliceAPI";
 
 const Menu = () => {
-  const postdata = useSelector((state) => state.profile);
   const log = useSelector((state) => state.Login);
   const profile_pic = useSelector(state => state.admin_profile.data)
   const token = useSelector(state => state.token.text);

@@ -15,15 +15,12 @@ const Profile = () => {
   const login = useSelector((state) => state.Login.text);
   const profile_pic = useSelector(state => state.admin_profile.data);
   const [get, setget] = useState(false);
-  console.log(profile_pic);
   let formData;
   const handleFileChange = async (e) => {
-    console.log(login);
     if (login === "Login") {
       alert("Please login to update the profile picture");
     } else {
       const file = e.target.files[0];
-      console.log(file);
       formData = new FormData();
       formData.append("admin_image", file);
       if (file) {
@@ -52,7 +49,6 @@ const Profile = () => {
   }, [get]);
 
   const profi = `http://localhost:4000/uploads/${profile_pic.user_image}`;
-  console.log(profi);
 
   return (
     <div className="flex flex-col">

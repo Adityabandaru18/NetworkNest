@@ -48,7 +48,6 @@ const Showposts = async (req: Request, res: Response) => {
   try {
     const token = req.params.id;
     const posts = await Post.find({ token });
-    console.log(posts);
     if (!posts) {
       return res.status(404).json({ message: "No posts found for the token" });
     }
@@ -63,7 +62,6 @@ const Deleteposts = async (req: Request, res: Response) => {
 
  const token = req.params.id;
  const {image} = req.body;
- console.log(image);
  try{
   const deleted = await Post.findOneAndDelete({images: image, token:token});
   if(deleted){
@@ -116,7 +114,6 @@ const Show_Admin = async (req: Request, res: Response) => {
     const token = req.params.id;
 
     const posts = await Post.findOne({ token });
-    console.log(posts);
     if (!posts) {
       return res.status(404).json({ message: "No posts found for the token" });
     }

@@ -8,8 +8,7 @@ export const Showprofile = createAsyncThunk(
     
     try {
       const response = await axios.get(`http://localhost:4000/backend/admin/${token}`);
-      console.log("redux profile get");
-      console.log(response);
+
       return response.data.posts;
     } catch (error) {
       console.error("Error occurred while fetching data:", error);

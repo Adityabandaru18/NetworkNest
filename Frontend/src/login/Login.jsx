@@ -22,7 +22,6 @@ import { ChangeLogin } from "../redux/slices/Loginslice.js";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { addadmin } from "../redux/slices/adminslice.js";
 import { AddToken } from "../redux/slices/tokenslice.js";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { Add_user } from "../redux/slices/AddpostsAPI.js";
 
@@ -49,7 +48,6 @@ const auth = getAuth(app1);
 
   const Check_token = async (token) => {
     let response = await axios.get(`http://localhost:4000/backend/token1/${token}`);
-    console.log(response.data);
     setT(parseInt(response.data, 10));
     if (!response.data) {
       setshow(true);

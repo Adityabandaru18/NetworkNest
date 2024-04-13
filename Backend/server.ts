@@ -3,10 +3,8 @@ import postrouter from "./routes/postRoutes";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import multer from 'multer';
 
 
-const upload = multer({ dest: 'uploads/' });
 dotenv.config(); 
 
 const app: Express = express();

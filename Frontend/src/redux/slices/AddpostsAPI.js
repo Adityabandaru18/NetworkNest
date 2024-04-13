@@ -14,8 +14,7 @@ export const Addpost = createAsyncThunk(
           },
         }
       );
-      console.log("Added data");
-      console.log(response);
+
       return response.data;
     } catch (error) {
       console.error("Error occurred in the Posts.tsx page:", error);
@@ -30,7 +29,7 @@ export const Add_user = createAsyncThunk(
     try {
       const response = await axios.post(`http://localhost:4000/backend/user/${token}`,
         {name})
-      console.log(response);
+
     }
     catch (error) {
       console.error("Error occurred in the Posts.tsx page:", error);
@@ -51,8 +50,7 @@ export const Addadmin = createAsyncThunk(
           },
         }
       );
-      console.log(response);
-      console.log("Updated profile pic");
+
       return response.data;
     } catch (error) {
       console.error("Error occurred in the Posts.tsx page:", error);
