@@ -2,9 +2,7 @@ import express, { Express} from "express";
 import postrouter from "./routes/postRoutes";
 import cors from "cors";
 import mongoose from "mongoose";
-// import axios from "axios";
 import dotenv from "dotenv";
-// import jwt from "jsonwebtoken";
 import multer from 'multer';
 
 

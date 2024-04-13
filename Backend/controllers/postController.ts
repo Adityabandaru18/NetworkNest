@@ -43,29 +43,6 @@ const Addposts = async (req:Request, res:Response)=>{
   
 }
 
-// const Addposts = async (req: Request, res: Response) => {
-
-//   try {
-//     const { name, token, admin } = req.body;
-//     console.log(token);
-//     const image = req.file?.filename;
-//     const exist = await Post.findOne({ token });
-//     const newPost = new Post({
-//       name: admin,
-//       user_text: name,
-//       images: image,
-//       token: token,
-//       user_image: exist?.user_image,
-//     });
-
-//     const savedPost = await newPost.save();
-//     res
-//       .status(201)
-//       .json({ message: "Post added successfully", post: savedPost });
-//   } catch (error) {
-//     res.status(500).json({ error });
-//   }
-// };
 
 const Showposts = async (req: Request, res: Response) => {
   try {
@@ -161,29 +138,6 @@ const All_posts = async (req: Request, res: Response) => {
 };
 
 
-const Edit_post = async (req: Request, res: Response) => {
-  const token = req.params.id;
-  const user_image = req.file?.filename;
-
-  try {
-    const updatedPost = await Post.findByIdAndUpdate(
-      token, 
-      { user_image: user_image }, 
-      { new: true } 
-    );
-
-    if (!updatedPost) {
-      return res.status(404).json({ message: "Post not found" });
-    }
-
-    return res.status(200).json(updatedPost);
-  } catch (error) {
-    console.error("Error updating post:", error);
-    return res.status(500).json({ message: "Internal server error" });
-  }
-};
-
-
 const Foundt = async (req: Request, res: Response) => {
   let token = req.params.id;
   try {
@@ -208,6 +162,5 @@ export {
   Show_Admin,
   All_posts,
   Foundt,
-  Add_name,
-  Edit_post
+  Add_name
 };

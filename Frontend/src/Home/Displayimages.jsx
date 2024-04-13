@@ -5,6 +5,8 @@ import { MdEditNote } from "react-icons/md";
 import { RiEdit2Line } from "react-icons/ri";
 import { MdDeleteOutline } from "react-icons/md";
 import { Deletepost } from "../redux/slices/ShowpostsAPI";
+
+
 const DisplayImages = ({ name, image, user_text, user_image, token }) => {
   const [liked, setLiked] = useState(false);
   const token1 = useSelector((state) => state.token.text);
@@ -19,8 +21,11 @@ const DisplayImages = ({ name, image, user_text, user_image, token }) => {
   };
 
   const Edit = () => {
+
     setshow(!show);
   }
+
+
 
   const Delete = () => {
     if (token === token1) {
@@ -100,6 +105,7 @@ const DisplayImages = ({ name, image, user_text, user_image, token }) => {
           </div>
         </div>
       )}
+
     </>
   );
 };

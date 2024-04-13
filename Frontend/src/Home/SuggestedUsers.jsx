@@ -15,7 +15,6 @@ const SuggestedUsers = ({ name, user_image }) => {
   const [showPlusIcon, setShowPlusIcon] = useState(true);
   const [showAlert, setShowAlert] = useState(false); 
   const login = useSelector((state)=> state.Login.text);
-  const profile_pic = useSelector(state => state.admin_profile.data);
   const token = useSelector(state => state.token.text);
 
   const playToggleSound = () => {

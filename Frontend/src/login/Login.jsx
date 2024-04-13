@@ -23,7 +23,6 @@ import { Alert, AlertIcon } from "@chakra-ui/react";
 import { addadmin } from "../redux/slices/adminslice.js";
 import { AddToken } from "../redux/slices/tokenslice.js";
 import { useSelector } from "react-redux";
-// import { Showprofile } from "../redux/slices/ProfilesliceAPI.js";
 import axios from "axios";
 import { Add_user } from "../redux/slices/AddpostsAPI.js";
 
@@ -36,14 +35,14 @@ const Login = () => {
   const [passL, setPassL] = useState("");
   const [showError, setShowError] = useState("");
   const [admin, setadmin] = useState("");
-  const name = useSelector((state) => state.admin_profile.data);
   const [t_found, setT] = useState(1);
   const [show, setshow] = useState(false);
   const [token1,settoken]= useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
 
-  const auth = getAuth(app1);
+const auth = getAuth(app1);
   const provider1 = new GoogleAuthProvider();
   const provider2 = new GithubAuthProvider();
 

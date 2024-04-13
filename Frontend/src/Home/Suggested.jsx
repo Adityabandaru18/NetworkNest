@@ -8,16 +8,9 @@ const Suggested = () => {
 
   const user_token = useSelector((state) => state.token.text);
   const fetchedData = useSelector((state) => state.showpost.Alldata);
+ const dispatch = useDispatch();
 
-
-
-
-  const dispatch = useDispatch();
-
-
-
-
-  useEffect(() => {
+ useEffect(() => {
     dispatch(Allposts())
   }, [dispatch]);
 
@@ -26,9 +19,7 @@ const Suggested = () => {
       <div className="sticky top-5">
         <p className="text-center text-2xl font-semibold">NetWork Users</p>
         <br />
-    
-      
-        {fetchedData
+   {fetchedData
   ? fetchedData
       .filter((data, index, self) => {
         return (

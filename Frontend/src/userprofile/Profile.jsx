@@ -9,12 +9,10 @@ import { Addadmin } from "../redux/slices/AddpostsAPI";
 import { Showprofile } from "../redux/slices/ProfilesliceAPI";
 
 const Profile = () => {
-  const prof = useSelector((state) => state.profile);
   const token = useSelector((state) => state.token.text);
   const dispatch = useDispatch();
   const fileInputRef = useRef(null);
   const login = useSelector((state) => state.Login.text);
-  const admin_name = useSelector((state) => state.Admin);
   const profile_pic = useSelector(state => state.admin_profile.data);
   const [get, setget] = useState(false);
   console.log(profile_pic);

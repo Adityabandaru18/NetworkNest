@@ -13,9 +13,7 @@ import React from "react";
 
 const Posts = () => {
   const login = useSelector((state) => state.Login.text);
-  const profile = useSelector((state) => state.profile);
   const token = useSelector((state) => state.token.text);
-  const admin_name = useSelector((state) => state.Admin);
   const fetchedData = useSelector((state)=>state.showpost.Alldata);
   const profile_pic = useSelector(state => state.admin_profile.data)
   const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || " ";

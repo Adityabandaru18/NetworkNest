@@ -7,8 +7,7 @@ import {
   Show_Admin,
   All_posts,
   Foundt,
-  Add_name,
-  Edit_post
+  Add_name
 } from "../controllers/postController";
 import multer from "multer";
 
@@ -35,6 +34,5 @@ router.get("/", All_posts);
 router.get("/token1/:id",Foundt);
 router.post("/user/:id",Add_name);
 router.post("/delete/:id",Deleteposts);
-router.put("/edit/:id",Edit_post);
 
 export default router;
