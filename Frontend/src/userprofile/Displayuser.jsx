@@ -8,6 +8,7 @@ const Displayuser = () => {
   const postdata = useSelector((state) => state.post);
   const token = useSelector((state) => state.token.text);
   const fetchedData = useSelector((state) => state.showpost.data);
+  const login = useSelector((state)=>state.Login.text);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +36,8 @@ const Displayuser = () => {
   ) : (
     <div className="flex justify-center items-center font-light text-3xl mt-28">
 
-    <p>No posts available</p>
+    <p>No  posts  available {login === "Login" && <div><p className="mt-3">Please login to upload your posts</p></div>}</p>
+
     </div>
   )}
 </div>

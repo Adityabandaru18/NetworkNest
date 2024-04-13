@@ -52,7 +52,7 @@ const Posts = () => {
 
   useEffect(() => {
    dispatch( Allposts())
-  }, [fetchedData]);
+  }, [get]);
 
   return (
     <div>
