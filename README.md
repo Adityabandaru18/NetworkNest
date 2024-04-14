@@ -51,6 +51,10 @@ Welcome to our full stack social media application! This project aims to provide
     ```
      npm start
     ```
+4. Executing the code in local server:
+   ```
+    http://localhost:5173/
+    ```
 
 ## Working Images
 ![Screenshot 2024-04-10 005725](https://github.com/Adityabandaru18/NetworkNest/assets/127210540/9a7e7380-4de8-4fbe-b2d6-b84e93adef50)
