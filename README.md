@@ -1,6 +1,6 @@
 # NetworkNest
 
-Welcome to our full stack social media application! This project aims to provide users with a seamless and engaging social media experience. The application is built using modern technologies and libraries to ensure robustness, scalability, and user satisfaction. The application is still under development.
+Welcome to our full stack social media application! This project aims to provide users with a seamless and engaging social media experience. The application is built using modern technologies and libraries to ensure robustness, scalability, and user satisfaction.
 
 ## Table of Contents
 
@@ -60,6 +60,10 @@ Welcome to our full stack social media application! This project aims to provide
 ---
 
 ![Screenshot 2024-04-10 005804](https://github.com/Adityabandaru18/NetworkNest/assets/127210540/9f00a363-df5d-4d87-980b-55049f345e36)
+---
+
+![Screenshot 2024-04-14 223116](https://github.com/Adityabandaru18/NetworkNest/assets/127210540/ca093104-369d-4ced-9e4c-dbb8f28f84b7)
+
 
 ## Tech Stack
 
@@ -79,5 +83,6 @@ Welcome to our full stack social media application! This project aims to provide
 - Chatting between Network Friends
 - Updating Loading effect for data fetching for better User experience
 
+# Note!
 
-
+This is a note to inform you that our project is currently in the development stage. While we strive to provide a seamless and engaging social media experience, please be aware that there may be bugs or incomplete features.
