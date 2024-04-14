@@ -10,7 +10,12 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 const MongoUrl : string= process.env.MONGODB_URI || "";
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use('/uploads',express.static("uploads"))

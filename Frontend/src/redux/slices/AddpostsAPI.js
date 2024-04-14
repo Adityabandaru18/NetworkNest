@@ -27,7 +27,7 @@ export const Add_user = createAsyncThunk(
   "Adduser",
   async ({ token, name }) => {
     try {
-      const response = await axios.post(`http://localhost:4000/backend/user/${token}`,
+      await axios.post(`http://localhost:4000/backend/user/${token}`,
         {name})
 
     }

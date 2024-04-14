@@ -42,12 +42,12 @@ const Profile = () => {
   };
 
 
-
   useEffect(() => {
-    dispatch(Showprofile(token));
-
-  }, [get]);
-
+    if (login !== "Login") {
+      dispatch(Showprofile(token));
+    }
+  }, [login, token]);
+  
   const profi = `http://localhost:4000/uploads/${profile_pic.user_image}`;
 
   return (

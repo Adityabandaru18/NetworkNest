@@ -33,7 +33,7 @@ const Displayuser = () => {
         ) : (
           <div className="flex justify-center items-center font-light text-3xl mt-28">
       
-          <p>No  posts  available {login === "Login" && <div><p className="mt-3">Please login to upload your posts</p></div>}</p>
+          <p>No  posts  available</p>
       
           </div>
         )
@@ -42,7 +42,7 @@ const Displayuser = () => {
   ) : (
     <div className="flex justify-center items-center font-light text-3xl mt-28">
 
-    <p>No  posts  available {login === "Login" && <div><p className="mt-3">Please login to upload your posts</p></div>}</p>
+    <p>No  posts  available</p>
 
     </div>
   )}

@@ -11,7 +11,7 @@ export const Showprofile = createAsyncThunk(
 
       return response.data.posts;
     } catch (error) {
-      console.error("Error occurred while fetching data:", error);
+      console.log("Error occurred while fetching data:", error);
       return rejectWithValue(error.response.data);
     }
   }

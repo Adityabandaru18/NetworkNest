@@ -15,7 +15,7 @@ const Posts = () => {
   const login = useSelector((state) => state.Login.text);
   const token = useSelector((state) => state.token.text);
   const fetchedData = useSelector((state)=>state.showpost.Alldata);
-  const profile_pic = useSelector(state => state.admin_profile.data)
+  const profile_pic = useSelector(state => state.admin_profile.data);
   const profi = `http://localhost:4000/uploads/${profile_pic.user_image}` || " ";
 
   const [get, setget] = useState(false);

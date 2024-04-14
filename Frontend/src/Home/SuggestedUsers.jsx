@@ -28,7 +28,6 @@ const SuggestedUsers = ({ name, user_image }) => {
       handleSmileClick();
       playToggleSound();
     }
-    console.log("hello");
   };
 
   const handleSmileClick = () => {
