@@ -4,11 +4,11 @@ Welcome to our full stack social media application! This project aims to provide
 
 ## Table of Contents
 
-- [Installation](#installation1)
-- [Working Images](#usage)
-- [Tech stack](#contributing)
-- [Project Status](#credits)
-  
+- Installation
+- Working Images
+- TechStack
+- Project status
+
 ## Installation
 
 ### Prerequisites
