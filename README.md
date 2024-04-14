@@ -83,6 +83,6 @@ Welcome to our full stack social media application! This project aims to provide
 - Chatting between Network Friends
 - Updating Loading effect for data fetching for better User experience
 
-# Note!
+# Note
 
 This is a note to inform you that our project is currently in the development stage. While we strive to provide a seamless and engaging social media experience, please be aware that there may be bugs or incomplete features.
