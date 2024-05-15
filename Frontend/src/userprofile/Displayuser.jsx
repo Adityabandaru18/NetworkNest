@@ -32,10 +32,7 @@ const Displayuser = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center font-light text-3xl mt-28">
-      
-          <p>No  posts  available</p>
-      
-          </div>
+    </div>
         )
       ))}
     </div>
